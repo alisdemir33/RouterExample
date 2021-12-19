@@ -46,8 +46,9 @@ const QuoteForm = (props) => {
         >
           {props.isLoading && (
             <div className={classes.loading}>
-              <LoadingSpinner />
+               <LoadingSpinner />             
             </div>
+
           )}
 
           <div className={classes.control}>

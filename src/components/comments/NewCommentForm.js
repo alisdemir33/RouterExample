@@ -41,6 +41,9 @@ const NewCommentForm = (props) => {
       </div>
       <div className={classes.actions}>
         <button className='btn'>Add Comment</button>
+        <button className='btn' onClick={props.onHideAddCommentHandler}>
+        Hide
+      </button> 
       </div>
     </form>
   );

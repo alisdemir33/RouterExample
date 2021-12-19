@@ -24,6 +24,10 @@ const Comments = () => {
     setIsAddingComment(true);
   };
 
+  const hideAddCommentHandler =()=>{
+    setIsAddingComment(false);
+  }
+
   const addedCommentHandler = useCallback(() => {
     sendRequest(quoteId);
   }, [sendRequest, quoteId]);
@@ -55,14 +59,15 @@ const Comments = () => {
       {!isAddingComment && (
         <button className='btn' onClick={startAddCommentHandler}>
           Add a Comment
-        </button>
+        </button>        
       )}
       {isAddingComment && (
         <NewCommentForm
           quoteId={quoteId}
           onAddedComment={addedCommentHandler}
-        />
-      )}
+          onHideAddCommentHandler={hideAddCommentHandler}
+        />        
+      ) }
       {comments}
     </section>
   );
