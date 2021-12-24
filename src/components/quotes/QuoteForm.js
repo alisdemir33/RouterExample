@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState,useDispatch } from 'react';
 import { Prompt } from 'react-router-dom';
 
 import Card from '../UI/Card';
@@ -7,6 +7,8 @@ import classes from './QuoteForm.module.css';
 
 const QuoteForm = (props) => {
   const [isEntering, setIsEntering] = useState(false);
+
+  
 
   const authorInputRef = useRef();
   const textInputRef = useRef();
@@ -44,11 +46,11 @@ const QuoteForm = (props) => {
           className={classes.form}
           onSubmit={submitFormHandler}
         >
-          {!props.isLoading && (
+         {/*  {!props.isLoading && (
             <div className={classes.loading}>
                <LoadingSpinner message="Saving Form!" />                        
             </div>
-          )}
+          )} */}
 
           <div className={classes.control}>
             <label htmlFor='author'>Author</label>

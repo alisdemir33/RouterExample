@@ -10,6 +10,9 @@ text-align: center;
 }
 .message_box{
   margin-bottom: 20px;
+  color: red;
+  font-size: xx-large;
+  font-weight: bold;
 }
 .spinner:after {
   content: ' ';
