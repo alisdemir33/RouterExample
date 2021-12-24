@@ -2,6 +2,14 @@
   display: inline-block;
   width: 80px;
   height: 80px;
+  text-align: center;
+}
+.ortala{
+display: inline-block;
+text-align: center;
+}
+.message_box{
+  margin-bottom: 20px;
 }
 .spinner:after {
   content: ' ';

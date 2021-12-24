@@ -44,11 +44,10 @@ const QuoteForm = (props) => {
           className={classes.form}
           onSubmit={submitFormHandler}
         >
-          {props.isLoading && (
+          {!props.isLoading && (
             <div className={classes.loading}>
-               <LoadingSpinner />             
+               <LoadingSpinner message="Saving Form!" />                        
             </div>
-
           )}
 
           <div className={classes.control}>
