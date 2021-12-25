@@ -14,15 +14,13 @@ const NewQuote = () => {
 
   useEffect(() => {
 
-    const isLoadingStatus = status === 'pending' ? true:false;
-    console.log(status);
-    if(status === 'pending')
-      dispatch(loadingActions.setLoading(isLoadingStatus));
-      else
-      dispatch(loadingActions.setLoading(isLoadingStatus));
+    const loadingStatus = status === 'pending' ? true : false;
+    const message = loadingStatus === true ? 'NEW QUOTE SAVING!!!!' : '';
+    dispatch(loadingActions.setLoading({ isLoadingStatus: loadingStatus, loadingMessage: message }));
+
     if (status === 'completed') {
       history.push('/quotes');
-    }    
+    }
   }, [status, history]);
 
   const addQuoteHandler = (quoteData) => {

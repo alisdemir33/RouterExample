@@ -5,24 +5,42 @@ import LoadingSpinner from '../components/UI/LoadingSpinner';
 import NoQuotesFound from '../components/quotes/NoQuotesFound';
 import useHttp from '../hooks/use-http';
 import { getAllQuotes } from '../lib/api';
+import { loadingActions } from '../store/loading';
+import { useDispatch } from 'react-redux';
+
 
 const AllQuotes = () => {
+  const dispatch = useDispatch();
+ 
   const { sendRequest, status, data: loadedQuotes, error } = useHttp(
     getAllQuotes,
     true
   );
 
   useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
 
-  if (status === 'pending') {
+    const loadingStatus = status === 'pending' ? true : false;
+    const message = loadingStatus ===true ? 'All Quotes Loading!!':'';
+    dispatch(loadingActions.setLoading({ isLoadingStatus: loadingStatus, loadingMessage: message }));
+
+  }, [status]);
+
+  useEffect(()=>{
+    sendRequest();
+  },[])
+
+
+   if (status === 'pending') {
+    return <div></div>;
+  } 
+
+  /* if (status === 'pending') {
     return (
       <div className='centered'>
         <LoadingSpinner message="Loading Quates" />
       </div>
     );
-  }
+  } */
 
   if (error) {
     return <p className='centered focused'>{error}</p>;

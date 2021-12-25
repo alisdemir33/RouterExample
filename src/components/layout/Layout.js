@@ -6,9 +6,11 @@ import MainNavigation from './MainNavigation';
 
 const Layout = (props) => {
   const isLoading = useSelector(state => state.loadingReducer.isLoading);
- const loadingDiv=    isLoading && (
+  const loadingMsg = useSelector(state => state.loadingReducer.message);
+
+ const loadingDiv= isLoading && (
       <div className={classes.loading}>
-         <LoadingSpinner message="Saving Form!" />                        
+         <LoadingSpinner message={loadingMsg}/>                        
       </div>
     ) ;
  
