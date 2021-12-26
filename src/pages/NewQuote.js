@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import QuoteForm from '../components/quotes/QuoteForm';
 import useHttp from '../hooks/use-http';
@@ -9,7 +9,7 @@ import { loadingActions } from '../store/loading';
 
 const NewQuote = () => {
   const { sendRequest, status } = useHttp(addQuote);
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,9 +19,9 @@ const NewQuote = () => {
     dispatch(loadingActions.setLoading({ isLoadingStatus: loadingStatus, loadingMessage: message }));
 
     if (status === 'completed') {
-      history.push('/quotes');
+      navigate('/quotes');
     }
-  }, [status, history]);
+  }, [status, navigate]);
 
   const addQuoteHandler = (quoteData) => {
     sendRequest(quoteData);
