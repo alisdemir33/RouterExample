@@ -3,6 +3,7 @@ import React,{Suspense} from 'react';
 import classes from './components/layout/Layout.module.css';
 
 import LoadingSpinner from './components/UI/LoadingSpinner';
+import LoadingBackdrop from './components/UI/LoadingBackdrop';
 import QuoteDetail from './pages/QuoteDetail';
 import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
@@ -14,15 +15,10 @@ const NewQuote =React.lazy( () => {return  import('./pages/NewQuote')});
 const AllQuotes =React.lazy( () => {return  import('./pages/AllQuotes')});
 
 function App() {
-  const loadingDiv= (
-    <div className={classes.loading}>
-       <LoadingSpinner message={"TESSSSSSSSSSSSSSSSSTTTTTT"}/>                        
-    </div>
-  ) ;
-
+  
   return (
     <Layout>
-       <Suspense fallback = {loadingDiv}> 
+       <Suspense fallback = {<LoadingBackdrop loadingMsg="Component is Loading"/>}> 
       <Routes>
         <Route path='/' element={ <Navigate to ='/quotes'/>} />    
         <Route path='/quotes' element={<AllQuotes />}/>
@@ -35,7 +31,7 @@ function App() {
       </Routes>
        </Suspense> 
     </Layout>
-  );
+  ); 
 }
 
 export default App;
